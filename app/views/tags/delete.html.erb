@@ -1,0 +1,17 @@
+<%= link_to("Back to list", announcements_path, :class => 'back-link') %>
+
+<div class="Tag delete">
+    <h2>Delete tag</h2>
+
+    <%= form_for(@tag, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this tag?</p>
+
+    <p class="reference-name"><%= f.object.tag %></p>
+
+    <div class="form-buttons">
+        <%= f.submit("Delete tag") %>
+    </div>
+
+    <% end %>
+</div>

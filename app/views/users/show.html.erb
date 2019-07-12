@@ -1,0 +1,26 @@
+<%= link_to("Back to menu", admin_path, :class => 'back-link') %>
+
+<div class="Users show">
+    <h2>Show user</h2>
+
+        <table class="table table-striped table-bordered" summary="Announcement view">
+            <thead class="thead-dark">
+            <tr>
+                <th><h5>Avatar</h5></th>
+                <td>
+                    <% if @user.avatar.url %>
+                        <%= image_tag @user.avatar.url %>
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <th><h5>Login</h5></th>
+                <td><%= @user.username %></td>
+            </tr>
+            <tr>
+                <th><h5>Name</h5></th>
+                <td><%= @user.name %></td>
+            </tr>
+            </thead>
+        </table>
+</div>

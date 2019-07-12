@@ -1,0 +1,24 @@
+<div class="comments new">
+        <%= form_for(@comment) do |f| %>
+
+        <table summary="Comment form field">
+        <tr>
+            <td><%= f.hidden_field(:user_id) %></td>
+        </tr>
+
+        <tr>
+            <th>Comment</th>
+            <td><%= f.text_field(:comment) %></td>
+        </tr>
+
+        <tr>
+            <td><%= f.hidden_field(:announcement_id) %></td>
+        </tr>
+        </table>
+
+        <div class="form-buttons">
+            <%= f.submit("Create comment") %>
+        </div>
+
+        <% end %>
+</div>

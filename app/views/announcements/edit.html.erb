@@ -1,0 +1,42 @@
+<%= link_to("Back to list", announcements_path, :class => 'back-link') %>
+
+<div class="announcements edit">
+    <h2>Update Announcement</h2>
+
+    <%= form_for(@announcement) do |f| %>
+
+    <table summary="Announcement form fields">
+    <tr>
+        <th>Title</th>
+        <td><%= f.text_field(:title) %></td>
+    </tr>
+
+    <tr>
+        <th>Description</th>
+        <td><%= f.text_field(:description) %></td>
+    </tr>
+
+    <tr>
+        <th>Address</th>
+        <td><%= f.text_field(:address) %></td>
+    </tr>
+
+    <tr>
+        <div class="form-group">
+            <th>Image</th>
+            <td><%= f.file_field(:avatar) %></td>
+        </div>
+    </tr>
+    
+    <tr>
+        <th>Activity</th>
+        <td><%= f.check_box(:activity) %></td>
+    </tr>
+    </table> 
+
+    <div class="form-buttons">
+        <%= f.submit("Update announcement") %>
+    </div>
+
+    <% end %>
+</div> 

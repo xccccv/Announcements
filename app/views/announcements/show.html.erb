@@ -1,0 +1,91 @@
+<%= link_to("Back to list", announcements_path, :class => 'back-link') %>
+
+<div class="Announcements show">
+
+    <table class="table table-bordered" summary="Tag list">
+    <thead class="thead-dark">
+    <tr>
+        <th>Tags</th>
+        <td>
+            <% @announcement.tags.each do |f| %>
+            <%= link_to(f.tag, delete_tag_path(f), :class => 'action delete') + ", " %>
+            <% end %>
+        </td>
+        <td class="actions table-active">
+            <%= link_to("Add", new_tag_path(@announcement), :class => 'action new') %>
+        </td>
+    </tr>
+    </table>
+
+    <h2>Announcement</h2>
+
+    <table class="table table-striped table-bordered" summary="Announcement view">
+       
+        <thead class="thead-dark">
+        <tr>
+            <th><h5>Title</h5></th>
+            <td><%= @announcement.title %></td>
+        </tr>
+
+        <tr>
+            <th><h5>Image</h5></th>
+            <td>
+                <% if @announcement.avatar.url %>
+                 <%= image_tag @announcement.avatar.url %>
+                <% end %>
+            </td>
+        </tr>
+
+        <tr>
+            <th><h5>Description</h5></th>
+            <td style="width:750px"><%= @announcement.description %></td>
+        </tr>
+
+        <tr>
+            <th><h5>Active</h5></th>
+            <td><%= @announcement.activity ? 'Yes' : 'No' %></td>
+        </tr>
+
+        <tr>
+            <th><h5>User</h5></th>
+            <% user = @announcement.user_id %>
+            <td><%= link_to(User.find(user).name, user_path(user), :class => 'action show') %></td>
+        </tr>
+
+        <tr>
+            <th><h5>Address</h5></th>
+            <td><%= @announcement.address %></td>
+        </tr>
+
+        <tr>
+            <th><h5>Created</h5></th>
+            <td><%= @announcement.created_at %></td> 
+        </tr> 
+        </thead>
+    </table>
+
+    <h2><%= @announcement.comments.count %> Comments</h2>
+
+    <button type="button" class="btn btn-link">
+    <%= link_to('Add new comment', new_comment_path(@announcement), :class => 'action new') %>
+    </button>
+
+    <table class="table table-hovered table-striped" summary="Comment list">
+        <thead class="thead-dark">
+        <tr class="header">
+            <th>User</th>
+            <th>Comment</th>
+            <th></th>
+       </tr>
+       </thead>
+      <% @announcement.comments.each do |comment| %>
+        <tr>
+
+            <td class="action table-active"><%= link_to(User.find(comment.user_id).name, user_path(comment.user_id), :class => 'action show') %></td>
+
+            <td><%= comment.comment %></td>
+            <td class="actions table-active"><%= link_to("Delete", delete_comment_path(comment), :class => 'action delete') %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>

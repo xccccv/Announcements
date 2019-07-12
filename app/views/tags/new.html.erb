@@ -1,0 +1,21 @@
+<div class="tags new">
+    <%= form_for(@tag) do |f| %>
+
+    <table summary="Content form field">
+    <tr>
+        <th>Tag</th>
+        <td><%= f.text_field(:tag) %></td>
+    </tr>
+
+    <tr>
+        <td><%= f.hidden_field(:announcement_id) %></td>
+    <tr>
+
+    </table>
+
+    <div class="form-buttons">
+        <%= f.submit("Create tag") %>
+    </div>
+    
+    <% end %>
+</div>

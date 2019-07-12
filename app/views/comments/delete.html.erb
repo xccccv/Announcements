@@ -1,0 +1,17 @@
+<%= link_to("Back to list", announcements_path, :class => 'back-link') %>
+
+<div class="Comment delete">
+    <h2>Delete comment</h2>
+
+    <%= form_for(@comment, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this comment?</p>
+
+    <p class="reference-name"><%= '"' + f.object.comment + '"' %></p>
+
+    <div class="form-buttons">
+        <%= f.submit("Delete comment") %>
+    </div>
+
+    <% end %>
+</div>
