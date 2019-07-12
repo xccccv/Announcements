@@ -1,0 +1,7 @@
+= link_to("Back to menu", admin_path, :class => 'back-link')
+.admin-users.edit
+  h2 Update user
+  = simple_form_for(@user) do |f|
+    = render(:partial => 'form', :locals => {:f => f})
+    .form-buttons
+      = f.button :submit, "Update user", class: "btn-primary"

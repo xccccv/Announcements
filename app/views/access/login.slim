@@ -1,0 +1,13 @@
+.login
+  = form_tag(access_attempt_login_path, :method => :post) do
+    table
+      td= link_to('Create user', new_user_path, :class => 'action new')
+      tr
+        td= label_tag(:username)
+        td= text_field_tag(:username, params[:username])
+      tr
+        td= label_tag(:password)
+        td= password_field_tag(:password)
+      tr
+        td  
+        td= submit_tag("Log In")

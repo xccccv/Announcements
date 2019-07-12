@@ -1,0 +1,8 @@
+= link_to("Back to list", announcements_path, :class => 'back-link')
+.Tag.delete 
+  h2 Delete tag 
+  = simple_form_for(@tag, :method => 'delete') do |f|
+    p Are you sure you want to permanently delete thid tag?
+    p.reference-name= f.object.tag 
+    .form-buttons 
+      = f.button :submit, "Delete tag", class: "btn-primary"

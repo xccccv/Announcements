@@ -1,0 +1,14 @@
+table summary=("Admin user form fields") 
+  tr
+    th= f.input :username
+  tr
+    th= f.input :first_name
+  tr
+    th= f.input :last_name
+  tr
+    th= f.input :email
+  tr
+    th= f.input :password
+  tr
+    .form-group
+      th= f.input :avatar, as: :file

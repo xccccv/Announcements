@@ -1,0 +1,19 @@
+= link_to("Back to menu", admin_path, :class => 'back-link')
+.Users.show
+  h2 Show user
+  table.table.table-striped.table-bordered summary=("Announcement view") 
+    thead.thead-dark
+      tr
+        th
+          h5 Avatar
+        td
+          - if @user.avatar.url
+            = image_tag @user.avatar.url
+      tr
+        th
+          h5 Login
+        td= @user.username
+      tr
+        th
+          h5 Name
+        td= @user.name

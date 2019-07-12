@@ -1,0 +1,11 @@
+.comments.new 
+  = simple_form_for(@comment) do |f|
+    table summary=("Comment form field")
+      tr 
+        th= f.input :user_id, :as => :hidden
+      tr 
+        th= f.input :comment 
+      tr
+        th= f.input :announcement_id, :as => :hidden 
+    .form-buttons 
+      = f.button :submit, "Create comment", class: "btn-primary"  

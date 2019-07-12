@@ -1,0 +1,9 @@
+.menu
+    h2 Admin menu
+    .identify 
+     | Logges in as: "#{@username}"
+     ul
+        li= link_to("Manage announcements", announcements_path)
+        li= link_to("Manage users", users_path)
+        li= link_to("Logout", access_logout_path)
+

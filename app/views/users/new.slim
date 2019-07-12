@@ -1,0 +1,7 @@
+= link_to("Back to menu", admin_path, :class => 'back-link')
+.users.new
+  h2 Create user
+  = simple_form_for(@user) do |f|
+    = render(:partial => 'form', :locals => {:f => f})
+    .form-buttons
+      = f.button :submit, "Create user", class: "btn-primary"

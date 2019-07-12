@@ -1,0 +1,10 @@
+.tags.new
+  = simple_form_for(@tag) do |f|
+    table summary=("Content form field")
+      tr 
+        th= f.input :tag 
+      tr 
+        th= f.input :announcement_id, :as => :hidden
+      tr 
+    .form-buttons 
+      = f.button :submit, "Create tag", class: "btn-primary"  

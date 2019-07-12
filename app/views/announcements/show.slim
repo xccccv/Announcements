@@ -1,0 +1,61 @@
+= link_to("Back to list", announcements_path, :class => 'back-link')
+.Announcements.show
+  table.table.table-bordered summary=("Tag list") 
+    thead.thead-dark
+      tr
+        th Tags
+        td
+          - @announcement.tags.each do |f|
+            = link_to(f.tag, delete_tag_path(f), :class => 'action delete') + ", "
+        td.actions.table-active
+          = link_to("Add", new_tag_path(@announcement), :class => 'action new')
+  h2 Announcement
+  table.table.table-striped.table-bordered summary=("Announcement view") 
+    thead.thead-dark
+      tr
+        th
+          h5 Title
+        td= @announcement.title
+      tr
+        th
+          h5 Image
+        td
+          - if @announcement.avatar.url
+            = image_tag @announcement.avatar.url
+      tr
+        th
+          h5 Description
+        td style="width:750px" = @announcement.description
+      tr
+        th
+          h5 Active
+        td= @announcement.activity ? 'Yes' : 'No'
+      tr
+        th
+          h5 User
+        - user = @announcement.user_id
+        td= link_to(User.find(user).name, user_path(user), :class => 'action show')
+      tr
+        th
+          h5 Address
+        td= @announcement.address
+      tr
+        th
+          h5 Created
+        td= @announcement.created_at
+  h2
+    = @announcement.comments.count
+    |  Comments
+  button.btn.btn-link type="button" 
+    = link_to('Add new comment', new_comment_path(@announcement), :class => 'action new')
+  table.table.table-hovered.table-striped summary=("Comment list") 
+    thead.thead-dark
+      tr.header
+        th User
+        th Comment
+        th
+    - @announcement.comments.each do |comment|
+      tr
+        td.action.table-active= link_to(User.find(comment.user_id).name, user_path(comment.user_id), :class => 'action show')
+        td= comment.comment
+        td.actions.table-active= link_to("Delete", delete_comment_path(comment), :class => 'action delete')

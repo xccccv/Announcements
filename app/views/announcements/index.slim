@@ -1,0 +1,44 @@
+.annoucements.index
+  h2 Announcements
+  = form_tag search_announcements_path do
+    input#searchbar.search.full-width autocomplete="off" name="query" placeholder=("Search announcements") type="text" 
+  button.btn.btn-link type="button" 
+    = link_to('Add new announcement', new_announcement_path, :class => 'action new')
+  table.table.table-striped.table-bordered summary=("Annoucement list") 
+    thead.thead-dark
+      tr.header
+        th Title
+        th style="width:250px"  Description
+        th Image
+        th Activity
+        th Tags
+        th Address
+        th Author
+        th Date
+        th
+    - @announcements.each do |announce|
+      tr
+        td= announce.title
+        td= truncate(announce.description, length: 163)
+        td
+          - if announce.avatar.url
+            = image_tag announce.avatar.url(:thumb)
+        td.center= announce.activity ? 'Yes' : 'No'
+        td
+          - announce.tags.each do |f|
+            = f.tag + ", "
+        td= announce.address
+        td.center= User.find(announce.user_id).name
+        td.center= announce.created_at
+        td.actions.table-active
+          = link_to("Show", announcement_path(announce), :class => 'action show')
+          = link_to("Edit", edit_announcement_path(announce), :class => 'action edit')
+          = link_to("Delete", delete_announcement_path(announce), :class => 'action delete')
+
+
+
+
+
+
+
+

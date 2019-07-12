@@ -1,0 +1,23 @@
+= link_to("Back to menu", admin_path, :class => 'back-link')
+.users.index
+  h2 Users
+  = link_to('Add new user', new_user_path, :class => 'action new')
+  div
+    = pluralize(@users.size, 'user')
+    | found
+  table.table.table-bordered.table-striped summary=("Admin users list") 
+    thead.thead-dark
+      tr
+        th Username
+        th Name
+        th Email
+        th Actions
+    - @users.each do |user|
+      tr
+        td= user.username
+        td= user.name
+        td= mail_to(user.email)
+        td.actions.table-active
+          = link_to('Show', user_path(user), :class => 'action show')
+          = link_to('Edit', edit_user_path(user), :class => 'action edit')
+          = link_to('Delete', delete_user_path(user), :class => 'action delete')

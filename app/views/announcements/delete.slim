@@ -1,0 +1,8 @@
+= link_to("Back to list", announcements_path, :class => 'back-link')
+.Announcements.delete
+  h2 Delete announcement
+  = simple_form_for(@announcement, :method => 'delete') do |f|
+    p Are you sure you want to permanently delete this announcement?
+    p.reference-name= f.object.title
+    .form-buttons
+      = f.button :submit, "Delete announcement", class: "btn-primary"
