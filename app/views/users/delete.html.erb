@@ -3,14 +3,14 @@
 <div class="users delete">
     <h2>Delete user</h2>
 
-    <%= form_for(@user, :method => 'delete') do |f| %>
+    <%= simple_form_for(@user, :method => 'delete') do |f| %>
 
     <p>Are you sure you want to permanently delete this user?</P>
 
     <p class="reference-name"><%= f.object.name %></p>
 
     <div class="form-buttons">
-        <%= f.submit("Delete user") %>
+        <%= f.button :submit, "Delete user", class: "btn-primary" %>
     </div>
 
     <% end %>

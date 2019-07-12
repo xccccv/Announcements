@@ -3,12 +3,12 @@
 <div class="users new">
     <h2>Create user</h2>
     
-    <%= form_for(@user) do |f| %>
+    <%= simple_form_for(@user) do |f| %>
 
     <%= render(:partial => 'form', :locals => {:f => f}) %>
 
     <div class="form-buttons">
-        <%= f.submit("Create admin user") %>
+        <%= f.button :submit, "Create user", class: "btn-primary" %>
     </div>
 
     <% end %>

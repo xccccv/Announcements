@@ -3,14 +3,14 @@
 <div class="Tag delete">
     <h2>Delete tag</h2>
 
-    <%= form_for(@tag, :method => 'delete') do |f| %>
+    <%= simple_form_for(@tag, :method => 'delete') do |f| %>
 
     <p>Are you sure you want to permanently delete this tag?</p>
 
     <p class="reference-name"><%= f.object.tag %></p>
 
     <div class="form-buttons">
-        <%= f.submit("Delete tag") %>
+        <%= f.button :submit, "Delete tag", class: "btn-primary" %>
     </div>
 
     <% end %>

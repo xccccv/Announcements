@@ -1,23 +1,22 @@
 <div class="comments new">
-        <%= form_for(@comment) do |f| %>
+        <%= simple_form_for(@comment) do |f| %>
 
         <table summary="Comment form field">
         <tr>
-            <td><%= f.hidden_field(:user_id) %></td>
+            <th><%= f.input :user_id, :as => :hidden %></th>
         </tr>
 
         <tr>
-            <th>Comment</th>
-            <td><%= f.text_field(:comment) %></td>
+            <th><%= f.input :comment %></th>
         </tr>
 
         <tr>
-            <td><%= f.hidden_field(:announcement_id) %></td>
+            <th><%= f.input :announcement_id, :as => :hidden %></th>
         </tr>
         </table>
 
         <div class="form-buttons">
-            <%= f.submit("Create comment") %>
+            <%= f.button :submit, "Create comment", class: "btn-primary" %>
         </div>
 
         <% end %>

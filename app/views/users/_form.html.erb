@@ -1,28 +1,22 @@
 <table summary="Admin user form fields">
     <tr>
-        <th><%= f.label(:username) %></th>
-        <td><%= f.text_field(:username) %></td> 
+        <th><%= f.input :username %></th>
     </tr>
     <tr>
-        <th><%= f.label(:first_name) %></th>
-        <td><%= f.text_field(:first_name) %></td>
+        <th><%= f.input :first_name %></th>
     </tr>
     <tr>
-        <th><%= f.label(:last_name) %></th>
-        <td><%= f.text_field(:last_name) %></td>
+        <th><%= f.input :last_name %></th>
     </tr>
     <tr>
-        <th><%= f.label(:email) %></th>
-        <td><%= f.text_field(:email) %></td>
+        <th><%= f.input :email %></th>
     </tr>
     <tr>
-        <th><%= f.label(:password) %></th>
-        <td><%= f.password_field(:password) %></td>
+        <th><%= f.input :password %></th>
     </tr>
     <tr>
         <div class="form-group">
-            <th>Image</th>
-            <td><%= f.file_field(:avatar) %></td>
+            <th><%= f.input :avatar, as: :file %></th>
         </div>
     </tr>
 </table>

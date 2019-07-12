@@ -3,43 +3,38 @@
 <div class="announcements new">
     <h2>Create Announcement</h2>
 
-    <%= form_for(@announcement) do |f| %>
+    <%= simple_form_for(@announcement) do |f| %>
 
     <table summary="Announcement form fields">
     <tr>
-        <th>Title</th>
-        <td><%= f.text_field(:title) %></td>
+        <th><%= f.input :title %></th>
     </tr>
 
     <tr>
-        <th>Description</th>
-        <td><%= f.text_field(:description) %></td>
+        <th><%= f.input :description %></th>
     </tr>
 
     <tr>
-        <th>Address</th>
-        <td><%= f.text_field(:address) %></td>
+        <th><%= f.input :address %></th>
     </tr>
 
     <tr>
         <div class="form-group">
-            <th>Image</th>
-            <td><%= f.file_field(:avatar) %></td>
+            <th><%= f.input :avatar, as: :file %></th>
         </div>
     </tr>
 
     <tr>
-        <th>Activity</th>
-        <td><%= f.check_box(:activity) %></td>
+        <th><%= f.input :activity %></th>
     </tr>
 
     <tr>
-        <td><%= f.hidden_field(:user_id) %></td>
+        <th><%= f.input :user_id, :as => :hidden %></th>
     </tr>
     </table> 
 
     <div class="form-buttons">
-        <%= f.submit("Create announcement") %>
+        <%= f.button :submit, "Create announcement", class: "btn-primary" %>
     </div>
 
     <% end %>

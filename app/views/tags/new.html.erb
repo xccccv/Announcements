@@ -1,20 +1,19 @@
 <div class="tags new">
-    <%= form_for(@tag) do |f| %>
+    <%= simple_form_for(@tag) do |f| %>
 
     <table summary="Content form field">
     <tr>
-        <th>Tag</th>
-        <td><%= f.text_field(:tag) %></td>
+        <th><%= f.input :tag %></th>
     </tr>
 
     <tr>
-        <td><%= f.hidden_field(:announcement_id) %></td>
+        <th><%= f.input :announcement_id, :as => :hidden %></th>
     <tr>
 
     </table>
 
     <div class="form-buttons">
-        <%= f.submit("Create tag") %>
+        <%= f.button :submit, "Create tag", class: "btn-primary" %>
     </div>
     
     <% end %>
