@@ -32,7 +32,7 @@ gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick', '>= 4.9.3', '< 5'
 
 # Bootstrap
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 
 gem 'jquery-rails'
 
