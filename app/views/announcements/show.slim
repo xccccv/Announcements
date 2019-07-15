@@ -21,7 +21,7 @@
           h5 Image
         td
           - if @announcement.avatar.url
-            = image_tag @announcement.avatar.url
+            = image_tag @announcement.avatar.url(:resized)
       tr
         th
           h5 Description
