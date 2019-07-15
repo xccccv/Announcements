@@ -8,7 +8,7 @@
           h5 Avatar
         td
           - if @user.avatar.url
-            = image_tag @user.avatar.url
+            = image_tag @user.avatar.url(:userPic)
       tr
         th
           h5 Login
