@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # changing image column names migration
 class ChangingImageColumnNames < ActiveRecord::Migration[5.2]

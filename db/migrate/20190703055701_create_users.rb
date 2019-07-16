@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # create users migration
 class CreateUsers < ActiveRecord::Migration[5.2]

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # adding user id column to comments
 class CreateAddingUseridColumnToComments < ActiveRecord::Migration[5.2]

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # add announcements id to comments migration
 class AddAnnouncementIdToComments < ActiveRecord::Migration[5.2]

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # removing text column from announcement migration
 class RemovingTextColumnFromAnnouncement < ActiveRecord::Migration[5.2]

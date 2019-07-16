@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # removing tag column from announcemetns migration
 class CreateRemovingTagColumnFromAnnouncements < ActiveRecord::Migration[5.2]

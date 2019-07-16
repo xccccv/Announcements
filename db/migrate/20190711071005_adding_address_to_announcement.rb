@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # adding address to announcement migration
 class AddingAddressToAnnouncement < ActiveRecord::Migration[5.2]

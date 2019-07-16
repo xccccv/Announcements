@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # create tags migration
 class CreateTags < ActiveRecord::Migration[5.2]

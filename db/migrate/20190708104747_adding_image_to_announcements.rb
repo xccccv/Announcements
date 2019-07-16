@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 # add image to announcements migration
 class AddingImageToAnnouncements < ActiveRecord::Migration[5.2]
