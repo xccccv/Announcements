@@ -1,5 +1,5 @@
 = link_to("Back to list", announcements_path, :class => 'back-link')
-.announcements.new 
+.announcements.new
  h2 Create announcement
  = simple_form_for(@announcement) do |f|
     table summary=("Announcement form fields")
@@ -7,14 +7,14 @@
             th= f.input :title
         tr
             th= f.input :description
-        tr 
-            th= f.input :address 
-        tr 
+        tr
+            th= f.input :address
+        tr
             .form-group
              th= f.input :avatar, as: :file
-        tr 
-            th= f.input :activity 
-        tr 
+        tr
+            th= f.input :activity
+        tr
             th= f.input :user_id, :as => :hidden
-    .form-buttons 
+    .form-buttons
       = f.button :submit, "Create announcement", class: "btn-primary"

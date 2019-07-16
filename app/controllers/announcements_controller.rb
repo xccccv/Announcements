@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
+# announcement controller
 class AnnouncementsController < ApplicationController
-  
   layout 'admin'
 
   before_action :confirm_logged_in
@@ -13,34 +15,34 @@ class AnnouncementsController < ApplicationController
   end
 
   def new
-    @announcement = Announcement.new(:user_id => getUserId)
+    @announcement = Announcement.new(user_id: _user_id)
   end
 
   def create
     @announcement = Announcement.new(announcement_params)
 
-    if @announcement.save 
-      flash[:notice] = "Announcement created successfully."
+    if @announcement.save
+      flash[:notice] = 'Announcement created successfully.'
       redirect_to(announcements_path)
-    else 
+    else
       render('new')
     end
   end
 
   def edit
     @announcement = Announcement.find(params[:id])
-  end  
+  end
 
-  def update 
+  def update
     @announcement = Announcement.find(params[:id])
 
-    if @announcement.update_attributes(announcement_params) 
-      flash[:notice] = "Announcement updated successfully."
+    if @announcement.update_attributes(announcement_params)
+      flash[:notice] = 'Announcement updated successfully.'
       redirect_to(announcement_path(@announcement))
     else
       render('edit')
     end
-  end 
+  end
 
   def delete
     @announcement = Announcement.find(params[:id])
@@ -48,23 +50,31 @@ class AnnouncementsController < ApplicationController
 
   def destroy
     @announcement = Announcement.find(params[:id])
-    @announcement.destroy 
-    flash[:notice] = "Announcement '#{@announcement.title}' destroyed successfully."
+    @announcement.destroy
+    flash[:notice] = "Announcement '#{@announcement.title}'"\
+                                  ' destroyed successfully.'
     redirect_to(announcements_path)
   end
 
-  def search 
+  def search
     @q = "%#{params[:query]}%"
     @announcements = Announcement.joins(:tags)
-                                 .where("title LIKE ? or description LIKE ? or address LIKE ? or tags.tag LIKE ?", @q, @q, @q, @q)
+                                 .where('title LIKE ? or description LIKE ?'\
+                                    ' or address LIKE ?'\
+                                    ' or tags.tag LIKE ?', @q, @q, @q, @q)
                                  .distinct
     render 'index'
   end
 
-  private 
+  private
 
-  def announcement_params 
-    params.require(:announcement).permit(:title, :description, :activity, :user_id, :address, :avatar, {avatars: []})
+  def announcement_params
+    params.require(:announcement).permit(:title,
+                                         :description,
+                                         :activity,
+                                         :user_id,
+                                         :address,
+                                         :avatar,
+                                         avatars: [])
   end
-  
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
+# create comments migration
 class CreateComments < ActiveRecord::Migration[5.2]
-  
   def up
     create_table :comments do |t|
       t.string :name

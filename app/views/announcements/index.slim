@@ -2,9 +2,9 @@
   h2 Announcements
   = form_tag search_announcements_path do
     input#searchbar.search.full-width autocomplete="off" name="query" placeholder=("Search announcements") type="text" 
-  button.btn.btn-link type="button" 
+  button.btn.btn-link type="button"
     = link_to('Add new announcement', new_announcement_path, :class => 'action new')
-  table.table.table-striped.table-bordered summary=("Annoucement list") 
+  table.table.table-striped.table-bordered summary=("Annoucement list")
     thead.thead-dark
       tr.header
         th Title

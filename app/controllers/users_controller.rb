@@ -1,8 +1,10 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
+# users controller
+class UsersController < ApplicationController
   layout 'admin'
 
-  before_action :confirm_logged_in, :except => [:new, :create]
+  before_action :confirm_logged_in, except: %i[new create]
 
   def index
     @users = User.sorted
@@ -12,18 +14,18 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show 
+  def show
     @user = User.find(params[:id])
   end
 
   def create
     @user = User.new(user_params)
-      if @user.save
-        flash[:notice] = 'User created successfully.'
-        redirect_to(users_path)
-      else
-        render('new')
-      end
+    if @user.save
+      flash[:notice] = 'User created successfully.'
+      redirect_to(users_path)
+    else
+      render('new')
+    end
   end
 
   def edit
@@ -44,7 +46,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def destroy 
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = 'User destroyed successfully.'
@@ -52,13 +54,13 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(
-      :username, 
+      :username,
       :first_name,
-      :last_name, 
-      :email, 
+      :last_name,
+      :email,
       :password,
       :avatar
     )

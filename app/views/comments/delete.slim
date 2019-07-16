@@ -1,8 +1,8 @@
 = link_to("Back to list", announcements_path, :class => 'back-link')
-.Comment.delete 
-  h2 Delete comment 
+.Comment.delete
+  h2 Delete comment
   = simple_form_for(@comment, :method => 'delete') do |f|
     p Are you sure you want to permanently delete thic comment?
     p.reference-name= '"' + f.object.comment + '"'
-    .form-buttons 
+    .form-buttons
       = f.button :submit, "Delete comment", class: "btn-primary"

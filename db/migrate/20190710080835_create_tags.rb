@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
+# create tags migration
 class CreateTags < ActiveRecord::Migration[5.2]
-  
   def up
     create_table :tags do |t|
       t.string :tag
@@ -9,7 +11,7 @@ class CreateTags < ActiveRecord::Migration[5.2]
     end
   end
 
-  def down 
+  def down
     drop_table :tags
   end
 end

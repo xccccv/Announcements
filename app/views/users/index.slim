@@ -4,8 +4,8 @@
   = link_to('Add new user', new_user_path, :class => 'action new')
   div
     = pluralize(@users.size, 'user')
-    | found
-  table.table.table-bordered.table-striped summary=("Admin users list") 
+    |  found
+  table.table.table-bordered.table-striped summary=("Admin users list")
     thead.thead-dark
       tr
         th Username

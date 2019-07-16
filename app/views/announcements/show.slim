@@ -1,6 +1,6 @@
 = link_to("Back to list", announcements_path, :class => 'back-link')
 .Announcements.show
-  table.table.table-bordered summary=("Tag list") 
+  table.table.table-bordered summary=("Tag list")
     thead.thead-dark
       tr
         th Tags
@@ -10,7 +10,7 @@
         td.actions.table-active
           = link_to("Add", new_tag_path(@announcement), :class => 'action new')
   h2 Announcement
-  table.table.table-striped.table-bordered summary=("Announcement view") 
+  table.table.table-striped.table-bordered summary=("Announcement view")
     thead.thead-dark
       tr
         th
@@ -46,9 +46,9 @@
   h2
     = @announcement.comments.count
     |  Comments
-  button.btn.btn-link type="button" 
+  button.btn.btn-link type="button"
     = link_to('Add new comment', new_comment_path(@announcement), :class => 'action new')
-  table.table.table-hovered.table-striped summary=("Comment list") 
+  table.table.table-hovered.table-striped summary=("Comment list")
     thead.thead-dark
       tr.header
         th User
