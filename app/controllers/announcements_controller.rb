@@ -12,6 +12,9 @@ class AnnouncementsController < ApplicationController
 
   def show
     @announcement = Announcement.find(params[:id])
+    @comment = Announcement.find(announce_id).comments.new(user_id: _user_id)
+    @tag = Announcement.find(announce_id).tags
+                       .new(announcement_id: announce_id)
   end
 
   def new
@@ -76,5 +79,9 @@ class AnnouncementsController < ApplicationController
                                          :address,
                                          :avatar,
                                          avatars: [])
+  end
+
+  def announce_id
+    params['id']
   end
 end

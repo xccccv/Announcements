@@ -10,9 +10,9 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
 
     Announcement.find(@tag.announcement_id).tags.each do |f|
-      next unless @tag.tag == f.tag
+      next unless @tag.tag == f.tag || @tag.tag.length < 1
 
-      flash[:notice] = 'The same tag already exists'
+      flash[:notice] = 'The same tag already exists or text field is empty'
       redirect_to(announcement_path(@tag.announcement_id))
       return
     end
@@ -34,7 +34,6 @@ class TagsController < ApplicationController
     flash[:notice] = 'Tag deleted successfully' if Tag.find(params[:id])
                                                                       .destroy
       redirect_to(announcement_path(announcm_id))
-    end
   end
 
   private

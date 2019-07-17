@@ -6,9 +6,19 @@
         th Tags
         td
           - @announcement.tags.each do |f|
-            = link_to(f.tag, delete_tag_path(f), :class => 'action delete') + ", "
-        td.actions.table-active
-          = link_to("Add", new_tag_path(@announcement), :class => 'action new')
+            = simple_form_for(f, :method => 'delete') do |f|
+              .form-buttons
+                = f.button :submit, "#{f.object.tag}", class: "btn-primary"
+  td.actions.table-active
+    .tags.new
+        = simple_form_for(@tag) do |f|
+          table summary=("Content form field")
+            tr
+              td= f.input :tag
+              td= f.input :announcement_id, :as => :hidden
+              td
+                .form-buttons
+                = f.button :submit, "Create tag", class: "btn-primary"
   h2 Announcement
   table.table.table-striped.table-bordered summary=("Announcement view")
     thead.thead-dark
@@ -43,11 +53,20 @@
         th
           h5 Created
         td= @announcement.created_at
+
+  .comments.new
+  = simple_form_for(@comment) do |f|
+    table summary=("Comment form field")
+      tr
+        td= f.input :user_id, :as => :hidden
+        td= f.input :comment
+        td= f.input :announcement_id, :as => :hidden
+        td
+          .form-buttons
+          = f.button :submit, "Create comment", class: "btn-primary"
   h2
     = @announcement.comments.count
     |  Comments
-  button.btn.btn-link type="button"
-    = link_to('Add new comment', new_comment_path(@announcement), :class => 'action new')
   table.table.table-hovered.table-striped summary=("Comment list")
     thead.thead-dark
       tr.header
@@ -58,4 +77,7 @@
       tr
         td.action.table-active= link_to(User.find(comment.user_id).name, user_path(comment.user_id), :class => 'action show')
         td= comment.comment
-        td.actions.table-active= link_to("Delete", delete_comment_path(comment), :class => 'action delete')
+        td
+          = simple_form_for(comment, :method => 'delete') do |f|
+            .form-buttons
+              = f.button :submit, "Delete comment", class: "btn-primary"
