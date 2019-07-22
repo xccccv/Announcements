@@ -19,7 +19,8 @@
               td= f.input :announcement_id, :as => :hidden
               td
                 .form-buttons
-                = f.button :submit, "Create tag", class: "btn-primary" 
+                  #btn_new_tag
+                    = f.button :submit, "Create tag", class: "btn-primary" 
   #status-area
   h2 Announcement
   table.table.table-striped.table-bordered summary=("Announcement view")
@@ -83,4 +84,5 @@
         td
           = simple_form_for(comment, :method => 'delete', remote: true) do |f|
             .form-buttons
-              = f.button :submit, "Delete comment", class: "btn-primary"
+              #btn_new_comment
+                = f.button :submit, "Delete comment", class: "btn-primary"

@@ -26,20 +26,21 @@
   };
 })(jQuery);
 
-
-$.ajax({
-    type: "POST",
-    url: "/tags"
-  })
-    $("#new_tag")
-    .bind("ajax:success", function(){
-      console.log('tag: success');
+$('#btn_new_tag').on('click', function(e) { 
+    $.ajax({
+      type: "POST",
+      url: "/tags"
     })
-    .bind("ajax:error", function(){
-      console.log('tag: error');
-
-      $('#status-area').flash_message({
-        text: 'The same tag already exists or text field is empty',
-        how: 'append'
+      $("#new_tag")
+      .bind("ajax:success", function(){
+        console.log('tag: success');
+      })
+      .bind("ajax:error", function(){
+        console.log('tag: error');
+  
+        $('#status-area').flash_message({
+          text: 'The same tag already exists or text field is empty',
+          how: 'append'
+      });
     });
-  });
+  })
