@@ -5,7 +5,7 @@ class AnnouncementsController < ApplicationController
   layout 'admin'
 
   before_action :confirm_logged_in
-
+  
   def index
     @announcements = Announcement.all.sortedByDate
   end

@@ -2,6 +2,9 @@
 
 # comments controller
 class CommentsController < ApplicationController
+
+  protect_from_forgery with: :null_session
+
   def new
     @comment = Announcement.find(announce_id).comments.new(user_id: _user_id)
   end
@@ -9,7 +12,6 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      flash[:notice] = 'Comment created successfully.'
       redirect_to(announcement_path(@comment.announcement_id))
     else
       render('new')
@@ -22,10 +24,8 @@ class CommentsController < ApplicationController
 
   def destroy
     announcm_id = Comment.find(params[:id]).announcement_id
-    if Comment.find(params[:id]).destroy
-      flash[:notice] = 'Comment deleted successfully.'
-      redirect_to(announcement_path(announcm_id))
-    end
+    Comment.find(params[:id]).destroy
+    redirect_to(announcement_path(announcm_id))
   end
 
   private

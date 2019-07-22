@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class TagsController < ApplicationController
+
+  protect_from_forgery with: :null_session
+
   def new
     @tag = Announcement.find(announce_id).tags
                        .new(announcement_id: announce_id)
@@ -12,13 +15,12 @@ class TagsController < ApplicationController
     Announcement.find(@tag.announcement_id).tags.each do |f|
       next unless @tag.tag == f.tag || @tag.tag.length < 1
 
-      flash[:notice] = 'The same tag already exists or text field is empty'
       redirect_to(announcement_path(@tag.announcement_id))
+      render :json => { :success => false }
       return
     end
 
     if @tag.save
-      flash[:notice] = 'Tag created successfully'
       redirect_to(announcement_path(@tag.announcement_id))
     else
       render('new')
@@ -31,9 +33,8 @@ class TagsController < ApplicationController
 
   def destroy
     announcm_id = Tag.find(params[:id]).announcement_id
-    flash[:notice] = 'Tag deleted successfully' if Tag.find(params[:id])
-                                                                      .destroy
-      redirect_to(announcement_path(announcm_id))
+    Tag.find(params[:id]).destroy
+    redirect_to(announcement_path(announcm_id))
   end
 
   private
